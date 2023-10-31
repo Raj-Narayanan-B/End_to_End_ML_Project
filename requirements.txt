@@ -12,4 +12,6 @@ ensure
 types-pyYaml
 Flask
 Flask-Cors
+gdown
+ipykernel
 -e .

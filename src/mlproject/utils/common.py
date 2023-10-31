@@ -19,6 +19,7 @@ from ensure import ensure_annotations
 from box.exceptions import BoxValueError
 from box import ConfigBox
 
+
 @ensure_annotations
 def load_yaml(file:Path) -> ConfigBox:
     try:
@@ -56,8 +57,7 @@ def load_binary(path:Path):
     logger.info(f"Object loaded from {path}")
     return(object)
 
-@ensure_annotations  
-def create_directories(dir:Path):
+def create_directories(dir):
     os.makedirs(dir,exist_ok=True)
     logger.info("Directory:{0} is created".format(dir))
 
