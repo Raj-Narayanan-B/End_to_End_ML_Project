@@ -8,9 +8,17 @@ class DataTransformationPipeline:
 
     def main(self):
         config = ConfigurationManager()
-        data_transformation_config = config.get_data_transformation_config()
-        obj = data_transformation(config= data_transformation_config)
-        obj.data_transformation()
+        schema_config = config.get_data_validation_config()
+
+        with open(schema_config.data_val_status_path) as file:
+            validation_status = file.read().split(" ")[-1]
+        
+        if validation_status == "True":
+            data_transformation_config = config.get_data_transformation_config()
+            obj = data_transformation(config= data_transformation_config)
+            obj.data_transformation()
+        else:
+            raise Exception("Schema Mismatch!")
 
 # stage_name = "Data Transformation Stage"
 
