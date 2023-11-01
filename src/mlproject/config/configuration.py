@@ -2,7 +2,9 @@ from json import load
 from pathlib import Path
 from src.mlproject.constants import *
 from src.mlproject.utils.common import load_yaml,create_directories
-from src.mlproject.entity.config_entity import DataIngestionConfig,DataValidationConfig
+from src.mlproject.entity.config_entity import (DataIngestionConfig,
+                                                DataValidationConfig,
+                                                DataTransformationConfig)
 
 class ConfigurationManager:
     def __init__(self,
@@ -41,3 +43,16 @@ class ConfigurationManager:
                                                       schema_path=schema)
         
         return(data_validation_config)
+
+    def get_data_transformation_config(self):
+        config = self.config.data_transformation
+
+        create_directories(config.root_dir)
+
+        data_transformation = DataTransformationConfig(
+                                                        root_dir = config.root_dir, 
+                                                        data_path = config.data_path,
+                                                        train_path= config.train_path,
+                                                        test_path = config.test_path
+                                                        )
+        return data_transformation

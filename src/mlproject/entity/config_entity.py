@@ -16,3 +16,10 @@ class DataValidationConfig:
     data_path: Path
     data_val_status_path: str
     schema_path: dict
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: str
+    train_path: str
+    test_path: str
