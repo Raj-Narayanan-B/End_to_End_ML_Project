@@ -6,12 +6,10 @@ matplotlib
 python-box
 joblib
 pyYaml
-notebook
 tqdm
 ensure
 types-pyYaml
 Flask
 Flask-Cors
 gdown
-ipykernel
 -e .
