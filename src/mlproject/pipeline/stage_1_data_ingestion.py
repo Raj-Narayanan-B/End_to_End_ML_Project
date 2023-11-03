@@ -2,7 +2,7 @@ from src.mlproject.config.configuration import ConfigurationManager
 from src.mlproject.components.data_ingestion import DataIngestion
 from src.mlproject import logger
 
-stage_name = "Data_Ingestion"
+stage_name = "Data_Ingestion Stage"
 
 class DataIngestionPipeline:
     def __init__(self) -> None:

@@ -13,7 +13,7 @@ import yaml
 import joblib
 import json
 
-from pathlib import Path
+from pathlib import Path #type: ignore
 from src.mlproject import logger
 from ensure import ensure_annotations
 from box.exceptions import BoxValueError

@@ -5,7 +5,8 @@ from src.mlproject.utils.common import load_yaml,create_directories
 from src.mlproject.entity.config_entity import (DataIngestionConfig,
                                                 DataValidationConfig,
                                                 DataTransformationConfig,
-                                                ModelTrainerConfig)
+                                                ModelTrainerConfig,
+                                                ModelEvaluation)
 
 class ConfigurationManager:
     def __init__(self,
@@ -19,6 +20,7 @@ class ConfigurationManager:
 
         create_directories(self.config.artifacts_root)
 
+
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         config = self.config.data_ingestion
 
@@ -28,9 +30,9 @@ class ConfigurationManager:
                                              source_url = config.source_url,
                                              local_data_file = config.local_data_file,
                                              data_unzip = config.unzip_dir)
-
         return (data_ingestion)
     
+
     def get_data_validation_config(self):
 
         config = self.config.data_validation
@@ -42,8 +44,8 @@ class ConfigurationManager:
                                                       data_path=config.data_path,
                                                       data_val_status_path=config.validation_status_path,
                                                       schema_path=schema)
-        
         return(data_validation_config)
+
 
     def get_data_transformation_config(self):
         config = self.config.data_transformation
@@ -75,3 +77,22 @@ class ConfigurationManager:
                                                 l1_ratio= params.l1_ratio,
                                                 target = schema.name)
         return (model_trainer_obj)
+    
+    
+    def get_model_evaluation_config(self):
+        config = self.config.model_evaluation
+        schema = self.schema.TARGET_COLUMN
+        params = self.params.Elastic_net
+
+        create_directories(config.root_dir)
+
+        model_evaluation_config = ModelEvaluation(
+            root_dir = config.root_dir,
+            test_path = config.test_path,
+            model_name= config.model_name,
+            metrics = config.metrics,
+            parameters = params,
+            target = schema.name,
+            mlflow_uri = 'https://dagshub.com/Raj-Narayanan-B/End_to_End_ML_Project.mlflow'
+        )
+        return model_evaluation_config
