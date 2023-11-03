@@ -168,3 +168,5 @@ artifacts/*
 mlflow_tracking.txt
 
 mlruns/*
+
+AWS config.txt
