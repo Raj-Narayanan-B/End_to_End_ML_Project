@@ -166,3 +166,5 @@ mlproject_1/*
 artifacts/*
 
 mlflow_tracking.txt
+
+mlruns/*

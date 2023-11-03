@@ -12,14 +12,14 @@ class ModelEvaluationPipeline:
         model_eval_obj = model_evaluation(config=model_eval_config)
         model_eval_obj.ml_flow_logging()
 
-stage_name = "Model Evaluation Stage"
-if __name__ == '__main__':
-    try:
-        logger.info(f"\n\n>>>>>{stage_name} Started<<<<<\n\n")
-        obj = ModelEvaluationPipeline()
-        obj.main()
-        logger.info(f"\n\n>>>>>{stage_name} Ended<<<<<\n\n")
+# stage_name = "Model Evaluation Stage"
+# if __name__ == '__main__':
+#     try:
+#         logger.info(f"\n\n>>>>>{stage_name} Started<<<<<\n\n")
+#         obj = ModelEvaluationPipeline()
+#         obj.main()
+#         logger.info(f"\n\n>>>>>{stage_name} Ended<<<<<\n\n")
 
-    except Exception as e:
-        logger.exception(e)
-        raise e
+#     except Exception as e:
+#         logger.exception(e)
+#         raise e
