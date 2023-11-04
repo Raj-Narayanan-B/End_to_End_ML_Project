@@ -8,7 +8,7 @@ from src.mlproject.utils.common import load_yaml
 
 from pathlib import Path #type: ignore
 import os
-
+ 
 app = Flask(__name__)
 
 @app.route("/", methods = ["GET"])
